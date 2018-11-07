@@ -1,2 +1,5 @@
 # Convert a text file into tab delimited format using awk
 awk '{ for(i=1;i<=NF;i++){if(i==NF){printf("%s\n",$NF);}else {printf("%s\t",$i)}}}' inputfile
+
+# Count the number of unique values in a column in a file for example column 4
+awk '{print $4}' inputfile | sort | uniq | wc -l
