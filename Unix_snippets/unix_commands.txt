@@ -1,0 +1,2 @@
+# install the gcc version 4.9 + in conda
+conda install -c serge-sans-paille gcc_49
