@@ -1,2 +1,5 @@
 # install the gcc version 4.9 + in conda
 conda install -c serge-sans-paille gcc_49
+
+# when you try to find something, anything, use *grep*
+java -jar /projectnb/bubhub/conda_root/user_conda/adai/envs/flynn_altstatus/share/snpeff-4.3.1t-1/snpEff.jar databases | grep  GRCh38
