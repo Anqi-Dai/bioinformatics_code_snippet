@@ -1,0 +1,8 @@
+# take screenshot of the SLX4IP gene in all SRR samples using batch script
+new
+genome hg38
+load /Users/angelD/Downloads/git_repo/newFlynn1802/flynn_altstatus/analysis/interested.genes/SRR.sample.Nov9/SRR1701133_extract_WGS.bam,/Users/angelD/Downloads/git_repo/newFlynn1802/flynn_altstatus/analysis/interested.genes/SRR.sample.Nov9/SRR1701137_extract_RNAseq.bam
+snapshotDirectory /Users/angelD/IGV_save/for.SLX4IP/both
+goto chr20:10,589,400-10,638,487
+collapse
+snapshot
