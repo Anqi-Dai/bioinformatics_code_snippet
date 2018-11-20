@@ -52,6 +52,12 @@ exprDF <- exprDF %>%
 # make the new x coord of the plot (with gaps!)
 Coord <- sort(c(seq(1, 77,4), seq(2, 78,4), seq(3, 79,4)))
 
+# make new break and label for the x axis
+xlabel <- data.frame(
+  Sample = unique(as.character(exprDF$Source)),
+  breaks = seq(2, 78,4)
+)
+
 exprDF.new <- exprDF %>%
   mutate(x = Coord) %>%
   dplyr::select(x, SampleFull, Status, SLX4IP, TERT) %>%
@@ -63,13 +69,13 @@ exprDF.new <- exprDF %>%
 
 ggplot(exprDF.new, aes(x = x, y = Cts,  color = Status, fill = Status)) +
   geom_bar(stat="identity", width = 0.7) +  
-  scale_x_continuous(breaks = exprDF.new$x,
-                     labels = exprDF.new$SampleFull,
+  scale_x_continuous(breaks = xlabel$breaks,
+                     labels = xlabel$Sample,
                      expand=c(0,0)) +
   labs(x = '',
-       y = 'Relative expression') +
+       y = 'Normalized counts') +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text=element_text(size=4),
+        axis.text=element_text(size=10),
         panel.background = element_blank(), 
         axis.line = element_line(colour = "black"),
         panel.border = element_rect(colour = "black", fill=NA, size=0.5),
