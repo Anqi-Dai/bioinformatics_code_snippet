@@ -6,3 +6,9 @@ java -jar /projectnb/bubhub/conda_root/user_conda/adai/envs/flynn_altstatus/shar
 
 # create conda environment in a certain path and install the softwares
 conda  create --prefix /projectnb/bubhub/conda_root/user_conda/adai/envs/py27  python=2.7 numpy blas lapack gsl
+
+# upgrade package through pip
+pip install [package_name] --upgrade
+
+# how to get the current most recent version of a package on pypi
+just google pypi [package_name]
