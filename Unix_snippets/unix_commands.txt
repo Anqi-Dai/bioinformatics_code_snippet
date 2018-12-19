@@ -12,3 +12,6 @@ pip install [package_name] --upgrade
 
 # how to get the current most recent version of a package on pypi
 just google pypi [package_name]
+
+# how to unzip gz files in Linux/Unix and removing the original gz files.
+gunzip XXXX.gz
