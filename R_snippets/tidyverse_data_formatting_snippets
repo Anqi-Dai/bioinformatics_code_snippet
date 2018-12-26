@@ -1,0 +1,23 @@
+# rename column names of a dataframe with replacement functionality
+rename_all(
+    funs(
+        stringr::str_replace_all(., ' ', '_') %>%
+        stringr::str_replace_all(., 'Factor_Value', '') %>%
+        stringr::str_replace_all(., '\\[|\\]', '') 
+      
+  )) %>%
+  
+  
+  # sample code for reading multiple files and then combine with file name informatin also recorded
+  
+  data <- cities %>% # start with the cities table
+  # create filenames
+  mutate(filename = paste(city, "_", state, ".csv", sep="")) %>%
+  # read in data
+  mutate(file_contents = map(filename,
+           ~ read_csv(file.path(data_path, .)))
+        ) %>% 
+  select(-filename) %>% # remove filenames, not needed anynmore
+  unnest() %>% # unnest
+  select(-location) # remove location column, not needed
+                    # since we have city and state columns
