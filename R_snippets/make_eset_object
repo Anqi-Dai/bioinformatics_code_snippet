@@ -1,0 +1,13 @@
+library(Biobase)
+library(tidyverse)
+
+# generate three df which are CTS, pheno and featureDF. The row or column names should match
+phenoData <- new("AnnotatedDataFrame", data = pheno)
+featureData <- new('AnnotatedDataFrame', data = featureDF)
+
+# build the eset object
+rawEset <- ExpressionSet(assayData=as.matrix(CTS), 
+                        phenoData=phenoData, 
+                        featureData= featureData)
+                        
+write_rds(rawEset, '../../../samples/RAW_whole_eset_60samples_57955features.RDS')
