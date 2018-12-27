@@ -8,7 +8,7 @@ rename_all(
   )) %>%
   
   
-  # sample code for reading multiple files and then combine with file name informatin also recorded
+# sample code for reading multiple files and then combine with file name informatin also recorded
   
   data <- cities %>% # start with the cities table
   # create filenames
@@ -21,3 +21,10 @@ rename_all(
   unnest() %>% # unnest
   select(-location) # remove location column, not needed
                     # since we have city and state columns
+
+# rename a column by its index not name
+rename(Cts = names(.)[1])
+
+# use certain column name as row name (here the "probes" column will be used as row name)
+  remove_rownames() %>%
+  column_to_rownames(var = 'probes')
