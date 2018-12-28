@@ -1,0 +1,2 @@
+# when you have  403 Forbidden error while trying to accessing a git repo, check the url in [remote "origin"] of .git/config file
+#   the url should be something like "git@github.com:Anqi-Dai/{repo_name}.git"
