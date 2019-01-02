@@ -1,0 +1,18 @@
+# drawing venn diagram
+library(VennDiagram)
+
+
+diff_list <- list(IRfinder = IRfin$ensgene,
+                  Whippet = RF89.ctrl.sig.gene)
+fill <- c("light blue", "pink")
+size  <- rep(0.5, 2)
+venn <- venn.diagram(x = diff_list, 
+      filename = NULL,
+      height = 2000,
+      width = 2000, fill = fill,
+      cat.default.pos = "text", 
+      cat.cex = size,
+      main = "Overlap of Signficant genes between IRfinder and Whippet(RF89.ctrl)");
+png('../figs/RF89_ctrl.overlap.whi.delta01.irfinder.IR.png', width = 4, height = 4, units = 'in', res = 300)
+grid.draw(venn)
+dev.off()
