@@ -1,0 +1,29 @@
+# Doing enrichment analysis with a Monti lab script using the Fisher's exact test
+
+## For the hyperenrichment test we need to download some gene sets from MSigDB 
+
+gsets <- readLines(paste(PATH,'data/c2.cp.v5.0.symbols.gmt',sep=''))
+gsets <- strsplit(gsets,'\t')
+names(gsets) <- sapply(gsets,function(x)x[1])
+gsets <- sapply(gsets,function(x)x[-(1:2)])
+
+## the allGenes is the background genes. 
+allGenes <- nrow(eset)
+
+## define a function to do a Fisher's exact test
+
+calcHyper <- function(geneSet,sig,allGenes){
+   a <- length(intersect(sig,geneSet))
+   b <- length(geneSet)-a
+   c <- length(sig)-a
+   d <- allGenes-a-b-c
+   cont <- matrix(c(a,b,c,d),ncol=2)
+   pVal <- fisher.test(cont)
+   return(c(overlap=a,geneset=a+b,sig=c+a,background=allGenes,p.value=pVal$p.value))
+}
+enrichment <- t(sapply(gsets,calcHyper,topGenes,allGenes))
+enrichment <- cbind(enrichment,adjusted.p=p.adjust(enrichment[,'p.value'],method='BH'))
+enrichment <- enrichment[order(enrichment[,'adjusted.p'], decreasing = FALSE),]
+enrichment[1:10,]
+
+# you can further differentiate to the topGenes.up and topGenes.down
