@@ -1,3 +1,6 @@
+# how to copy only a file with same name in different folders to other place(maintain the parent folder)
+for file in /projectnb/lau-bumc/qichengm/projects/Lau_lab/human/HD_PD_project/miRNA/*_TE/TE@HERVIP10FH:1-5102 ; do cp --parents "$file" . ; done
+
 # install the gcc version 4.9 + in conda
 conda install -c serge-sans-paille gcc_49
 
@@ -15,3 +18,5 @@ just google pypi [package_name]
 
 # how to unzip gz files in Linux/Unix and removing the original gz files.
 gunzip XXXX.gz
+
+
