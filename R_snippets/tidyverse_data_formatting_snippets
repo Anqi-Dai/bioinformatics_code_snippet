@@ -1,3 +1,11 @@
+# when calculate the mean of two columns
+# be sure to use the rowwise() function to compute the mean for each row
+fil %>%
+  filter(type == 'CE') %>%
+  rowwise() %>%
+  mutate(Psi_A = mean(c(Psi_14, Psi_89), na.rm=T))
+
+
 # rename column names of a dataframe with replacement functionality
 rename_all(
     funs(
