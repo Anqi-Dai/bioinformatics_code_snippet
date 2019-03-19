@@ -1,3 +1,8 @@
+# Gosh how to remove duplicates in an efficient and dplyr way!!!!
+df14 <- bind_rows(A3SS, A5SS, RI, SE, MXE) %>%
+  distinct(locus, .keep_all = TRUE)
+
+
 # when calculate the mean of two columns
 # be sure to use the rowwise() function to compute the mean for each row
 fil %>%
